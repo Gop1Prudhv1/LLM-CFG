@@ -5,6 +5,7 @@ from llama_index.core.callbacks import LlamaDebugHandler, CallbackManager
 from llama_index.core.chat_engine.types import ChatMode
 
 from CFGImageGenerator import CFGImageGenerator
+from prompts import PROMPT_IMPROVER
 
 load_dotenv()
 import streamlit as st
@@ -65,11 +66,12 @@ for message in st.session_state.messages:
 if st.session_state.messages[-1]["role"] == "user":
     with st.chat_message("assistant"):
         with st.spinner("Thinking..."):
-            response = st.session_state.chat_engine.chat(message=prompt)
-            cfg = CFGImageGenerator()
-            cfg.generate_image(response.__str__())
+            response = st.session_state.chat_engine.chat(message=PROMPT_IMPROVER + prompt)
             st.write(response.response)
             st.session_state.messages.append({
                 "role": "assistant",
                 "content": response.response
             })
+            cfg = CFGImageGenerator()
+            print(response.response)
+            cfg.generate_image(response.response)

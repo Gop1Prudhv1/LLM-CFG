@@ -3,3 +3,4 @@
 # IDE specific files
 .idea/
 *.iml
+**/__pycache__/
