@@ -1,0 +1,19 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+llama-index = "*"
+openai = "*"
+pinecone-client = "*"
+python-dotenv = "*"
+llama-index-vector-stores-pinecone = "*"
+black = "*"
+streamlit = "*"
+graphviz = "*"
+
+[dev-packages]
+
+[requires]
+python_version = "3.11"
